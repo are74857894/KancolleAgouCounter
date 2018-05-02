@@ -11,8 +11,16 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class AgouCounter extends JFrame {
+    private int	countBossBattle = 0;
+    private int countBattle = 0;
+    private int countBossWin = 0;
+    private int countSwin = 0;
+    private boolean top = false;
 
    	private JPanel countSWin;
+    private JButton btnBossBattleMCount;
+    private JButton btnBossButtleReset;
+    private JButton btnBossBattleCount;
 
 	/**
 	 * Launch the application.
@@ -33,20 +41,10 @@ public class AgouCounter extends JFrame {
 			}
 		});
 	}
-	int	countBossBattle=0;
-	int countBattle=0;
-	int countBossWin=0;
-	int countSwin=0;
 
-	private JButton btnBossBattleMCount;
-	private JButton btnBossButtleReset;
-	private JButton btnBossBattleCount;
 	/**
-	 * Create the frame.
+     * Create the frame.
 	 */
-
-	boolean top = false;
-
 	public AgouCounter() {
 		setTitle("艦これあ号カウンター");
 
