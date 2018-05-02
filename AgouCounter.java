@@ -59,29 +59,26 @@ public class AgouCounter extends JFrame {
 
 		JLabel countLblBoss = new JLabel("ボス到達数：0/24");/*ボス到達数*/
 		countLblBoss.setBounds(17, 105, 118, 16);
-				countSWin.add(countLblBoss);
+		countSWin.add(countLblBoss);
 
-				JLabel kiratuke= new JLabel("");
-				kiratuke.setBounds(268, 304, 118, 16);/*キラ付けカウンター用。邪魔だったら消す*/
-					kiratuke.setForeground(Color.BLACK);
-							countSWin.add(kiratuke);
+		JLabel kiratuke= new JLabel("");
+		kiratuke.setBounds(268, 304, 118, 16);/*キラ付けカウンター用。邪魔だったら消す*/
+		kiratuke.setForeground(Color.BLACK);
+		countSWin.add(kiratuke);
 
 		JLabel tasseiBoss= new JLabel("未達成");
 		tasseiBoss.setBounds(17, 130, 50, 25);/*達成表示用。邪魔だったら消す。*/
-			tasseiBoss.setForeground(Color.BLACK);
-								countSWin.add(tasseiBoss);
+		tasseiBoss.setForeground(Color.BLACK);
+		countSWin.add(tasseiBoss);
 
 		JLabel tasseiBattle = new JLabel("未達成");
-								tasseiBattle.setBounds(17, 65, 45, 16);
-								countSWin.add(tasseiBattle);
-								{
+		tasseiBattle.setBounds(17, 65, 45, 16);
+		countSWin.add(tasseiBattle);
 
-									btnBossBattleCount = new JButton("+1");
-									btnBossBattleCount.setBounds(147, 95, 50, 60);/*カウンター本体。最低限ここさえあれば*/
+		btnBossBattleCount = new JButton("+1");
+        btnBossBattleCount.setBounds(147, 95, 50, 60);/*カウンター本体。最低限ここさえあれば*/
 		btnBossBattleCount.addActionListener(e -> clickBtnBossBattleCount(countLblBoss, tasseiBoss));
 		countSWin.add(btnBossBattleCount);
-	}
-
 
 		btnBossBattleMCount = new JButton("-1");
 		btnBossBattleMCount.setBounds(206, 95, 50, 60);/*マイナスカウンターのほう。*/
@@ -165,8 +162,10 @@ public class AgouCounter extends JFrame {
 		countSWin.add(frontCheck);
 
 		JButton btnallReset = new JButton("オールリセット");
-		btnallReset.addActionListener(e -> clickBtnallReset(countLblBoss, tasseiBoss, countLblBattle, tasseiBattle,
-                countLblSwin, tasseiSwin, countLblBossWin, tasseiBossWin));
+		btnallReset.addActionListener(e -> clickBtnallReset(
+		        countLblBoss, tasseiBoss, countLblBattle, tasseiBattle,
+                countLblSwin, tasseiSwin, countLblBossWin, tasseiBossWin
+        ));
 		btnallReset.setBounds(116, 298, 150, 25);
 		countSWin.add(btnallReset);
 	}
