@@ -19,10 +19,6 @@ public class AgouCounter extends JFrame {
     private int countSwin = 0;
     private boolean top = false;
 
-   	private JPanel countSWin;
-    private JButton btnBossBattleMCount;
-    private JButton btnBossButtleReset;
-    private JButton btnBossBattleCount;
     private JLabel kiratuke;
     private JLabel countLblBoss;
     private JLabel tasseiBoss;
@@ -32,6 +28,7 @@ public class AgouCounter extends JFrame {
     private JLabel tasseiSwin;
     private JLabel countLblBossWin;
     private JLabel tasseiBossWin;
+    private JCheckBox frontCheck;
 
 	/**
 	 * アプリケーションを起動する
@@ -51,7 +48,7 @@ public class AgouCounter extends JFrame {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 396, 380);
-		countSWin = new JPanel();
+        JPanel countSWin = new JPanel();
 		countSWin.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(countSWin);
 		countSWin.setLayout(null);
@@ -78,19 +75,19 @@ public class AgouCounter extends JFrame {
 		countSWin.add(tasseiBattle);
 
         /* カウンター本体。最低限ここさえあれば */
-		btnBossBattleCount = new JButton("+1");
+        JButton btnBossBattleCount = new JButton("+1");
         btnBossBattleCount.setBounds(147, 95, 50, 60);
 		btnBossBattleCount.addActionListener(e -> clickBtnBossBattleCount());
 		countSWin.add(btnBossBattleCount);
 
         /* マイナスカウンターのほう。 */
-		btnBossBattleMCount = new JButton("-1");
+        JButton btnBossBattleMCount = new JButton("-1");
 		btnBossBattleMCount.setBounds(206, 95, 50, 60);
 		btnBossBattleMCount.addActionListener(e -> clickBtnBossBattleMCount());
 		countSWin.add(btnBossBattleMCount);
 
         /* リセット処理 */
-		btnBossButtleReset = new JButton("リセット");
+        JButton btnBossButtleReset = new JButton("リセット");
 		btnBossButtleReset.setBounds(268, 95, 100, 60);
 		btnBossButtleReset.addActionListener(e -> clickBtnBossButtleReset());
 		countSWin.add(btnBossButtleReset);
@@ -163,9 +160,8 @@ public class AgouCounter extends JFrame {
 		btnBossWinReset.setBounds(268, 223, 100, 60);
 		countSWin.add(btnBossWinReset);
 
-
-		JCheckBox frontCheck = new JCheckBox("常に最前面表示");
-		frontCheck.addActionListener(e -> clickFrontCheck(frontCheck));
+		frontCheck = new JCheckBox("常に最前面表示");
+		frontCheck.addActionListener(e -> clickFrontCheck());
 		frontCheck.setBounds(17, 9, 129, 25);
 		countSWin.add(frontCheck);
 
@@ -329,9 +325,8 @@ public class AgouCounter extends JFrame {
     }
     /**
      * 最前面表示にするかを切り替える
-     * @param frontCheck
      */
-    private void clickFrontCheck(JCheckBox frontCheck){
+    private void clickFrontCheck(){
         if(frontCheck.isSelected()) {
             top = true;
         }else {
