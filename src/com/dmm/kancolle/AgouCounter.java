@@ -1,8 +1,14 @@
 package com.dmm.kancolle;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * あ号カウンターのウィンドウクラス
@@ -13,7 +19,6 @@ public class AgouCounter extends JFrame {
 	private int countBattle = 0;
 	private int countBossWin = 0;
 	private int countSwin = 0;
-	private boolean top = false;
 
 	private JLabel kiratuke;
 	private JLabel countLblBoss;
@@ -30,19 +35,17 @@ public class AgouCounter extends JFrame {
 	 * アプリケーションを起動する
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(() -> {
-			AgouCounter frame = new AgouCounter();
-			frame.setVisible(true);
-		});
+		// インスタンスを生成してsetVisibleを設定すれば投げっぱなしでいい
+		SwingUtilities.invokeLater(() -> new AgouCounter().setVisible(true));
 	}
 
 	/**
 	 * コンストラクタ
 	 */
-	public AgouCounter() {
+	private AgouCounter() {
 		setTitle("艦これあ号カウンター");
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setBounds(100, 100, 396, 380);
 		JPanel countSWin = new JPanel();
 		countSWin.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -175,10 +178,8 @@ public class AgouCounter extends JFrame {
 		countLblBoss.setText("ボス到達数：" + countBossBattle + "/24");
 		if (countBossBattle >= 24) {
 			tasseiBoss.setText("達成！");/*24回終わった時に出す文字。色とか悩み中*/
-		}
-		if (countBossBattle < 24) {
+		} else {
 			tasseiBoss.setText("未達成");
-
 		}
 	}
 
@@ -190,13 +191,11 @@ public class AgouCounter extends JFrame {
 		countLblBoss.setText("ボス到達数：" + countBossBattle + "/24");
 		if (countBossBattle % 3 == 0) {
 			kiratuke.setText("アハ★");/*1-1キラ付けカウンター。３の倍数で出現するので目安に。*/
-		}
-		if (countBossBattle % 3 != 0) {
+		} else {
 			kiratuke.setText("");
 			if (countBossBattle >= 24) {
 				tasseiBoss.setText("達成！");/*24回終わった時に出す文字。色とか悩み中*/
-			}
-			if (countBossBattle < 24) {
+			} else {
 				tasseiBoss.setText("未達成");
 			}
 		}
@@ -219,16 +218,15 @@ public class AgouCounter extends JFrame {
 	private void clickBtnCountBattle() {
 		countBattle++;
 		countLblBattle.setText("戦闘数：" + countBattle + "/36");
-		if (countBattle >= 36)
+		if (countBattle >= 36) {
 			tasseiBattle.setText("達成!");
-		if (countBattle < 36)
+		} else {
 			tasseiBattle.setText("未達成");
+		}
 		if (countBattle % 3 == 0) {
 			kiratuke.setText("キラキラ☆");/*1-1キラ付けカウンター。３の倍数で出現するので目安に。*/
-		}
-		if (countBattle % 3 != 0) {
+		} else {
 			kiratuke.setText("");
-
 		}
 	}
 
@@ -238,14 +236,13 @@ public class AgouCounter extends JFrame {
 	private void clickBtnCountMBattle() {
 		countBattle--;
 		countLblBattle.setText("戦闘数：" + countBattle + "/36");
-		if (countBattle >= 36)
+		if (countBattle >= 36) {
 			tasseiBattle.setText("達成!");
-		if (countBattle < 36) {
+		} else {
 			tasseiBattle.setText("未達成");
 			if (countBattle % 3 == 0) {
 				kiratuke.setText("キラキラ☆");/*1-1キラ付けカウンター。３の倍数で出現するので目安に。*/
-			}
-			if (countBattle % 3 != 0) {
+			} else {
 				kiratuke.setText("");
 			}
 		}
@@ -266,9 +263,9 @@ public class AgouCounter extends JFrame {
 	private void clickBtnCountSwin() {
 		countSwin++;
 		countLblSwin.setText("S勝利数：" + countSwin + "/6");
-		if (countSwin >= 6)
+		if (countSwin >= 6) {
 			tasseiSwin.setText("達成！");
-		if (countSwin < 6) {
+		} else {
 			tasseiSwin.setText("未達成");
 		}
 	}
@@ -279,9 +276,9 @@ public class AgouCounter extends JFrame {
 	private void clickBtnCountMSwin() {
 		countSwin--;
 		countLblSwin.setText("S勝利数：" + countSwin + "/6");
-		if (countSwin >= 6)
+		if (countSwin >= 6) {
 			tasseiSwin.setText("達成！");
-		if (countSwin < 6) {
+		} else {
 			tasseiSwin.setText("未達成");
 		}
 	}
@@ -292,7 +289,6 @@ public class AgouCounter extends JFrame {
 	private void clickBtnSwinReset() {
 		countSwin = 0;
 		countLblSwin.setText("S勝利数：" + countSwin + "/6");
-		if (countSwin < 6) ;
 		tasseiSwin.setText("未達成");
 	}
 
@@ -302,10 +298,10 @@ public class AgouCounter extends JFrame {
 	private void clickBtnBossWin() {
 		countBossWin++;
 		countLblBossWin.setText("ボス勝利数：" + countBossWin + "/12");
-		if (countBossWin >= 12) ;
-		tasseiBossWin.setText("達成！");
 		if (countBossWin < 12) {
 			tasseiBossWin.setText("未達成");
+		} else {
+			tasseiBossWin.setText("達成！");
 		}
 	}
 
@@ -315,10 +311,10 @@ public class AgouCounter extends JFrame {
 	private void clickBtnMBossWin() {
 		countBossWin--;
 		countLblBossWin.setText("ボス勝利数：" + countBossWin + "/12");
-		if (countBossWin >= 12) ;
-		tasseiBossWin.setText("達成！");
 		if (countBossWin < 12) {
 			tasseiBossWin.setText("未達成");
+		} else {
+			tasseiBossWin.setText("達成！");
 		}
 	}
 
@@ -335,13 +331,7 @@ public class AgouCounter extends JFrame {
 	 * 最前面表示にするかを切り替える
 	 */
 	private void clickFrontCheck() {
-		if (frontCheck.isSelected()) {
-			top = true;
-		} else {
-			top = false;
-
-		}
-		setAlwaysOnTop(top);/*最前面表示*/
+		setAlwaysOnTop(frontCheck.isSelected());/*最前面表示*/
 	}
 
 	/**
